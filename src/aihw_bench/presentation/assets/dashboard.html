@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdn.plot.ly; style-src 'self'; img-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>__TITLE__</title>
+  <link rel="stylesheet" href="assets/dashboard.css">
+  <script defer src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script defer src="assets/dashboard.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <strong>__TITLE__</strong>
+      <div class="muted">History, hardware comparison, reports, and exports.__NOTICE__</div>
+    </div>
+    <button id="theme">Toggle theme</button>
+  </header>
+  <main>
+    <section class="controls">
+      <input id="search" placeholder="Search session, backend, device, hardware">
+      <select id="backend"><option value="">All backends</option></select>
+      <select id="device"><option value="">All devices</option></select>
+      <select id="status"><option value="">All statuses</option></select>
+      <button id="export-json">Export JSON</button>
+      <button id="export-csv">Export CSV</button>
+    </section>
+    <section class="grid">
+      <div class="panel"><h2>Benchmark history</h2><div id="history" class="chart"></div></div>
+      <div class="panel"><h2>Hardware comparison</h2><div id="hardware" class="chart"></div></div>
+    </section>
+    <section class="panel">
+      <h2>Sessions <span id="count" class="muted"></span></h2>
+      <table>
+        <thead><tr><th>ID</th><th>Status</th><th>Backend</th><th>Device</th><th>Hardware</th><th>Latency</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+    <section class="grid">
+      <div class="panel" id="detail">
+        <h2>Report browser</h2>
+        <p class="muted">Select a session to inspect metrics, capabilities, diagnostics, and report paths.</p>
+      </div>
+      <div class="panel"><h2>Interactive comparison</h2><div id="comparison" class="chart"></div></div>
+    </section>
+  </main>
+  <script id="dashboard-data" type="application/json">__DATA__</script>
+</body>
+</html>

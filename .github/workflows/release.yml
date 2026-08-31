@@ -1,0 +1,337 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag to validate, for example v2.0.0"
+        required: true
+        type: string
+      publish_pypi:
+        description: "Deliberately publish to production PyPI after TestPyPI verification"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+env:
+  PACKAGE_NAME: aihw-bench
+  PYTHON_VERSION: "3.12"
+  GHCR_IMAGE: ghcr.io/${{ github.repository_owner }}/aihw-bench
+  DOCKERHUB_IMAGE: ${{ vars.DOCKERHUB_IMAGE }}
+
+jobs:
+  validate:
+    name: Validate release metadata
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - id: version
+        name: Validate semantic version, package metadata, and changelog
+        env:
+          RELEASE_TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: |
+          python scripts/check_release_version.py --tag "${RELEASE_TAG}"
+          echo "tag=${RELEASE_TAG}" >> "${GITHUB_OUTPUT}"
+          echo "version=${RELEASE_TAG#v}" >> "${GITHUB_OUTPUT}"
+
+  quality:
+    name: Quality, security, and documentation gates
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+      - name: Install quality dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+          python -m pip install pytest pytest-cov ruff black mypy mkdocs mkdocs-material "mkdocstrings[python]" pip-audit types-PyYAML
+      - name: Ruff
+        run: ruff check src tests scripts
+      - name: Black
+        run: black --check src tests scripts
+      - name: mypy
+        run: mypy src
+      - name: Tests and coverage
+        run: pytest
+      - name: Security scan
+        run: pip-audit
+      - name: Build documentation
+        run: mkdocs build --strict
+      - name: Upload coverage reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-reports
+          path: |
+            coverage.xml
+            htmlcov
+      - name: Upload documentation site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  build-python:
+    name: Build Python distributions, SBOM, and checksums
+    needs: [validate, quality]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install build tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install build cyclonedx-bom twine
+      - name: Build wheel and source distribution
+        run: python -m build
+      - name: Validate exact distribution set and metadata
+        env:
+          RELEASE_VERSION: ${{ needs.validate.outputs.version }}
+        run: |
+          WHEEL="dist/aihw_bench-${RELEASE_VERSION}-py3-none-any.whl"
+          SDIST="dist/aihw_bench-${RELEASE_VERSION}.tar.gz"
+          test -f "${WHEEL}"
+          test -f "${SDIST}"
+          test "$(find dist -maxdepth 1 -type f \( -name '*.whl' -o -name '*.tar.gz' \) | wc -l)" -eq 2
+          python -m twine check "${WHEEL}" "${SDIST}"
+      - name: Generate Python SBOM
+        run: cyclonedx-py environment --output-format JSON --output-file dist/aihw-bench-${{ needs.validate.outputs.version }}-sbom.json
+      - name: Generate release notes
+        run: python scripts/generate_release_notes.py --version "${{ needs.validate.outputs.version }}" --output dist/RELEASE_NOTES.md
+      - name: Copy release metadata
+        run: |
+          cp CHANGELOG.md dist/CHANGELOG.md
+          cp LICENSE dist/LICENSE
+      - name: Generate checksums
+        shell: bash
+        run: |
+          cd dist
+          sha256sum * > SHA256SUMS
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: dist/
+      - name: Upload exact Python distributions
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-distributions
+          path: |
+            dist/aihw_bench-${{ needs.validate.outputs.version }}-py3-none-any.whl
+            dist/aihw_bench-${{ needs.validate.outputs.version }}.tar.gz
+
+  sign-artifacts:
+    name: Sign release artifacts
+    needs: build-python
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-artifacts
+          path: dist
+      - name: Sign files with Sigstore
+        uses: sigstore/gh-action-sigstore-python@v3.2.0
+        with:
+          inputs: dist/*
+      - name: Upload signed release artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-release-artifacts
+          path: dist/
+
+  verify-install:
+    name: Verify wheel install on ${{ matrix.os }}
+    needs: sign-artifacts
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-distributions
+          path: dist
+      - name: Install built wheel
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install dist/*.whl
+      - name: Verify import and CLI
+        run: |
+          python -c "import aihw_bench; print(aihw_bench.__version__)"
+          aihw-bench version
+          aihw-bench doctor
+
+  docker:
+    name: Build Docker image and publish only after production approval
+    needs: [validate, quality]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    outputs:
+      digest: ${{ steps.build.outputs.digest }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Log in to Docker Hub
+        if: ${{ env.DOCKERHUB_IMAGE != '' }}
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build tag list
+        id: tags
+        shell: bash
+        run: |
+          {
+            echo "tags<<EOF"
+            echo "${GHCR_IMAGE}:${{ needs.validate.outputs.tag }}"
+            echo "${GHCR_IMAGE}:${{ needs.validate.outputs.version }}"
+            echo "${GHCR_IMAGE}:latest"
+            if [ -n "${DOCKERHUB_IMAGE}" ]; then
+              echo "${DOCKERHUB_IMAGE}:${{ needs.validate.outputs.tag }}"
+              echo "${DOCKERHUB_IMAGE}:${{ needs.validate.outputs.version }}"
+              echo "${DOCKERHUB_IMAGE}:latest"
+            fi
+            echo "EOF"
+          } >> "${GITHUB_OUTPUT}"
+      - id: build
+        name: Build and push image with provenance and image SBOM
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_pypi == true }}
+          tags: ${{ steps.tags.outputs.tags }}
+          provenance: true
+          sbom: true
+
+  publish-testpypi:
+    name: Publish to TestPyPI using Trusted Publishing
+    needs: verify-install
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/aihw-bench
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-distributions
+          path: dist
+      - name: Publish distributions to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+          packages-dir: dist/
+          skip-existing: true
+
+  verify-testpypi:
+    name: Verify TestPyPI installation
+    needs: [validate, publish-testpypi]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - name: Install the published TestPyPI distribution in a clean environment
+        env:
+          RELEASE_VERSION: ${{ needs.validate.outputs.version }}
+        run: |
+          python -m venv .testpypi-venv
+          .testpypi-venv/bin/python -m pip install --upgrade pip
+          .testpypi-venv/bin/python -m pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple "aihw-bench==${RELEASE_VERSION}"
+          .testpypi-venv/bin/python -c "import aihw_bench; assert aihw_bench.__version__ == '${RELEASE_VERSION}'"
+          .testpypi-venv/bin/aihw-bench version
+          .testpypi-venv/bin/aihw-bench benchmark --backend reference --warmup 0 --iterations 1 --report json
+
+  publish-pypi:
+    name: Publish to PyPI using Trusted Publishing
+    needs: [validate, verify-testpypi]
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_pypi == true }}
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/aihw-bench
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: python-distributions
+          path: dist
+      - name: Publish distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+
+  github-release:
+    name: Create GitHub Release
+    needs: [validate, publish-pypi, docker]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: signed-release-artifacts
+          path: dist
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.validate.outputs.tag }}
+          name: AIHW-Bench ${{ needs.validate.outputs.tag }}
+          body_path: dist/RELEASE_NOTES.md
+          files: dist/*
+          generate_release_notes: true
+
+  deploy-docs:
+    name: Deploy GitHub Pages documentation
+    needs: [quality, github-release]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,270 @@
+{
+  "benchmark": "llm-generation",
+  "generator": "aihw-bench deterministic synthetic inputs",
+  "input_shape": [
+    1,
+    128
+  ],
+  "samples": [
+    {
+      "id": "llm-generation-00000",
+      "seed": 1401,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00001",
+      "seed": 1402,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00002",
+      "seed": 1403,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00003",
+      "seed": 1404,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00004",
+      "seed": 1405,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00005",
+      "seed": 1406,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00006",
+      "seed": 1407,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00007",
+      "seed": 1408,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00008",
+      "seed": 1409,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00009",
+      "seed": 1410,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00010",
+      "seed": 1411,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00011",
+      "seed": 1412,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00012",
+      "seed": 1413,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00013",
+      "seed": 1414,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00014",
+      "seed": 1415,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00015",
+      "seed": 1416,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00016",
+      "seed": 1417,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00017",
+      "seed": 1418,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00018",
+      "seed": 1419,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00019",
+      "seed": 1420,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00020",
+      "seed": 1421,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00021",
+      "seed": 1422,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00022",
+      "seed": 1423,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00023",
+      "seed": 1424,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00024",
+      "seed": 1425,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00025",
+      "seed": 1426,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00026",
+      "seed": 1427,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00027",
+      "seed": 1428,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00028",
+      "seed": 1429,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00029",
+      "seed": 1430,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00030",
+      "seed": 1431,
+      "shape": [
+        1,
+        128
+      ]
+    },
+    {
+      "id": "llm-generation-00031",
+      "seed": 1432,
+      "shape": [
+        1,
+        128
+      ]
+    }
+  ],
+  "schema_version": "1.0",
+  "seed": 1401,
+  "sha256": "024491065c5781dfabbe6fb86afa8efdefbca04b596cc2a20b6982f0ba0221e3",
+  "task": "text-generation"
+}

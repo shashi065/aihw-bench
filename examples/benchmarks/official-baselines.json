@@ -1,0 +1,106 @@
+{
+  "results": [
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "image-classification",
+      "device": "cpu",
+      "latency_mean_seconds": 0.001,
+      "metric": "top1_accuracy",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 1000.0
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "object-detection",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0011,
+      "metric": "map_50",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 909.0909
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "semantic-segmentation",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0012,
+      "metric": "mean_iou",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 833.3333
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "llm-generation",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0013,
+      "metric": "tokens_per_second",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 769.2308
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "vision-transformer",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0014,
+      "metric": "top1_accuracy",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 714.2857
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "cnn",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0015,
+      "metric": "top1_accuracy",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 666.6667
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "audio-classification",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0016,
+      "metric": "accuracy",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 625.0
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "speech-recognition",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0017,
+      "metric": "word_error_rate",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 588.2353
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "embedded-ai",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0018,
+      "metric": "top1_accuracy",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 555.5556
+    },
+    {
+      "backend": "reference",
+      "batch_size": 1,
+      "benchmark": "tinyml",
+      "device": "cpu",
+      "latency_mean_seconds": 0.0019,
+      "metric": "accuracy",
+      "metric_value": 0.0,
+      "throughput_samples_per_second": 526.3158
+    }
+  ],
+  "schema_version": "1.0",
+  "sha256": "28dfa3194b84eeb0f0679393c99100407d951a10da1165c6decb40cea34e7ee2"
+}

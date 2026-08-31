@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+site/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local benchmark output
+.aihw-bench/
+reports/
+artifacts/
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

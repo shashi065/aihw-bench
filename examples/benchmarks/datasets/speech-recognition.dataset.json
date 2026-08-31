@@ -1,0 +1,159 @@
+{
+  "benchmark": "speech-recognition",
+  "generator": "aihw-bench deterministic synthetic inputs",
+  "input_shape": [
+    1,
+    1,
+    16000
+  ],
+  "samples": [
+    {
+      "id": "speech-recognition-00000",
+      "seed": 1801,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00001",
+      "seed": 1802,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00002",
+      "seed": 1803,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00003",
+      "seed": 1804,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00004",
+      "seed": 1805,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00005",
+      "seed": 1806,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00006",
+      "seed": 1807,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00007",
+      "seed": 1808,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00008",
+      "seed": 1809,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00009",
+      "seed": 1810,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00010",
+      "seed": 1811,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00011",
+      "seed": 1812,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00012",
+      "seed": 1813,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00013",
+      "seed": 1814,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00014",
+      "seed": 1815,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "speech-recognition-00015",
+      "seed": 1816,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    }
+  ],
+  "schema_version": "1.0",
+  "seed": 1801,
+  "sha256": "92303c764ffdae080cb36678ff9d8dfbeeb3e157ed3f307e251a330c9ce1f218",
+  "task": "transcription"
+}

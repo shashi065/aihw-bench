@@ -1,0 +1,18 @@
+{
+  "name": "AIHW-Bench",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.mypy-type-checker",
+        "charliermarsh.ruff"
+      ]
+    }
+  },
+  "postCreateCommand": "python -m pip install -e . pytest pytest-cov ruff black mypy mkdocs mkdocs-material 'mkdocstrings[python]'",
+  "remoteUser": "root"
+}

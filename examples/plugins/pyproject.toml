@@ -1,0 +1,15 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aihw-bench-example-plugin"
+version = "0.1.0"
+description = "Example AIHW-Bench plugin package."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+dependencies = ["aihw-bench>=0.0.0"]
+
+[project.entry-points."aihw_bench.plugins"]
+example = "example_plugin:register_plugin"

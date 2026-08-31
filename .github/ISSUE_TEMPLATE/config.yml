@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/aihw-bench/aihw-bench/security/policy
+    about: Please report security issues privately.
+  - name: Documentation
+    url: https://aihw-bench.github.io/aihw-bench/
+    about: Read the project documentation.

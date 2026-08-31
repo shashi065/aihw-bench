@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use AI Hardware Benchmark Suite in research or engineering reports, please cite it."
+title: "AI Hardware Benchmark Suite"
+abstract: "A universal benchmarking and profiling framework for AI hardware, RTL simulators, CPUs, GPUs, embedded AI platforms, and custom accelerators."
+version: 0.0.0
+date-released: 2026-07-29
+license: Apache-2.0
+repository-code: "https://github.com/aihw-bench/aihw-bench"
+authors:
+  - family-names: "AIHW Bench Maintainers"

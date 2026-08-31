@@ -1,0 +1,336 @@
+{
+  "benchmark": "embedded-ai",
+  "generator": "aihw-bench deterministic synthetic inputs",
+  "input_shape": [
+    1,
+    3,
+    96,
+    96
+  ],
+  "samples": [
+    {
+      "id": "embedded-ai-00000",
+      "seed": 1901,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00001",
+      "seed": 1902,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00002",
+      "seed": 1903,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00003",
+      "seed": 1904,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00004",
+      "seed": 1905,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00005",
+      "seed": 1906,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00006",
+      "seed": 1907,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00007",
+      "seed": 1908,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00008",
+      "seed": 1909,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00009",
+      "seed": 1910,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00010",
+      "seed": 1911,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00011",
+      "seed": 1912,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00012",
+      "seed": 1913,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00013",
+      "seed": 1914,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00014",
+      "seed": 1915,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00015",
+      "seed": 1916,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00016",
+      "seed": 1917,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00017",
+      "seed": 1918,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00018",
+      "seed": 1919,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00019",
+      "seed": 1920,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00020",
+      "seed": 1921,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00021",
+      "seed": 1922,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00022",
+      "seed": 1923,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00023",
+      "seed": 1924,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00024",
+      "seed": 1925,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00025",
+      "seed": 1926,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00026",
+      "seed": 1927,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00027",
+      "seed": 1928,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00028",
+      "seed": 1929,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00029",
+      "seed": 1930,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00030",
+      "seed": 1931,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    },
+    {
+      "id": "embedded-ai-00031",
+      "seed": 1932,
+      "shape": [
+        1,
+        3,
+        96,
+        96
+      ]
+    }
+  ],
+  "schema_version": "1.0",
+  "seed": 1901,
+  "sha256": "29e7c2a0fe3635782f2a00fd4760f627f28c3b54e1eb184b49f2bc679ddace91",
+  "task": "classification"
+}

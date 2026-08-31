@@ -1,0 +1,97 @@
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "aihw-bench"
+version = "2.0.0"
+description = "A universal benchmarking and profiling framework for AI hardware, simulators, CPUs, GPUs, embedded AI platforms, and custom accelerators."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "AIHW Bench Maintainers" }]
+keywords = ["benchmark", "ai", "hardware", "profiling", "pytorch", "onnx", "tflite", "rtl", "accelerator"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: System :: Benchmark",
+]
+dependencies = [
+  "jinja2>=3.1",
+  "pydantic>=2.7",
+  "pyyaml>=6.0",
+  "rich>=13.7",
+  "typer>=0.12",
+]
+
+[project.optional-dependencies]
+pytorch = ["torch>=2.3"]
+onnx = ["onnxruntime>=1.18"]
+tflite = ["tflite-runtime>=2.14; platform_system != 'Windows'"]
+all-backends = ["torch>=2.3", "onnxruntime>=1.18"]
+
+[project.urls]
+Homepage = "https://github.com/aihw-bench/aihw-bench"
+Documentation = "https://aihw-bench.github.io/aihw-bench"
+Repository = "https://github.com/aihw-bench/aihw-bench"
+Issues = "https://github.com/aihw-bench/aihw-bench/issues"
+Changelog = "https://github.com/aihw-bench/aihw-bench/blob/main/CHANGELOG.md"
+
+[project.scripts]
+aihw-bench = "aihw_bench.presentation.cli.main:app"
+
+[project.entry-points."aihw_bench.plugins"]
+
+[tool.poetry]
+packages = [{ include = "aihw_bench", from = "src" }]
+include = ["src/aihw_bench/presentation/assets/**"]
+
+[tool.poetry.group.dev.dependencies]
+black = ">=24.4"
+mypy = ">=1.10"
+pre-commit = ">=3.7"
+pytest = ">=8.2"
+pytest-cov = ">=5.0"
+pytest-mock = ">=3.14"
+ruff = ">=0.5"
+types-PyYAML = ">=6.0"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = ">=1.6"
+mkdocs-material = ">=9.5"
+mkdocstrings = { version = ">=0.25", extras = ["python"] }
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["A", "B", "C4", "E", "F", "I", "N", "PL", "RUF", "SIM", "UP", "W"]
+ignore = ["A002", "PLC0415", "PLR0912", "PLR0913", "PLR0915", "PLR0917", "UP046"]
+
+[tool.ruff.lint.per-file-ignores]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+packages = ["aihw_bench"]
+
+[tool.pytest.ini_options]
+addopts = "--cov=aihw_bench --cov-report=term-missing --cov-report=xml --cov-report=html --cov-fail-under=95"
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+markers = [
+  "performance: deterministic framework-overhead tests that must avoid host-specific benchmark assumptions",
+  "regression: edge-case tests that preserve fixes for previously discovered failure modes",
+]

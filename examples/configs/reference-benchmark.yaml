@@ -1,0 +1,18 @@
+profile: default
+backend:
+  name: reference
+  device: cpu
+execution:
+  warmup_iterations: 0
+  iterations: 1
+  batch_size: 1
+  precision: fp32
+reports:
+  formats:
+    - json
+    - markdown
+  output_dir: reports
+metrics:
+  enabled:
+    - latency
+    - throughput

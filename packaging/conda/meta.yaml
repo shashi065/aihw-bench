@@ -1,0 +1,46 @@
+{% set name = "aihw-bench" %}
+{% set version = environ.get("AIHW_BENCH_VERSION", "0.0.0") %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/a/aihw-bench/aihw-bench-{{ version }}.tar.gz
+  sha256: {{ environ.get("AIHW_BENCH_SDIST_SHA256", "") }}
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  entry_points:
+    - aihw-bench = aihw_bench.presentation.cli.main:app
+
+requirements:
+  host:
+    - python >=3.12
+    - pip
+    - poetry-core
+  run:
+    - python >=3.12
+    - jinja2 >=3.1
+    - pydantic >=2.7
+    - pyyaml >=6.0
+    - rich >=13.7
+    - typer >=0.12
+
+test:
+  imports:
+    - aihw_bench
+  commands:
+    - aihw-bench version
+    - aihw-bench doctor
+
+about:
+  home: https://github.com/aihw-bench/aihw-bench
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Universal benchmarking and profiling for AI hardware and accelerators.
+
+extra:
+  recipe-maintainers:
+    - aihw-bench-maintainers

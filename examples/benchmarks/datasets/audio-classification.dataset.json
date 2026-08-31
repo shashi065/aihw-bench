@@ -1,0 +1,303 @@
+{
+  "benchmark": "audio-classification",
+  "generator": "aihw-bench deterministic synthetic inputs",
+  "input_shape": [
+    1,
+    1,
+    16000
+  ],
+  "samples": [
+    {
+      "id": "audio-classification-00000",
+      "seed": 1701,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00001",
+      "seed": 1702,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00002",
+      "seed": 1703,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00003",
+      "seed": 1704,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00004",
+      "seed": 1705,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00005",
+      "seed": 1706,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00006",
+      "seed": 1707,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00007",
+      "seed": 1708,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00008",
+      "seed": 1709,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00009",
+      "seed": 1710,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00010",
+      "seed": 1711,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00011",
+      "seed": 1712,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00012",
+      "seed": 1713,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00013",
+      "seed": 1714,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00014",
+      "seed": 1715,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00015",
+      "seed": 1716,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00016",
+      "seed": 1717,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00017",
+      "seed": 1718,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00018",
+      "seed": 1719,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00019",
+      "seed": 1720,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00020",
+      "seed": 1721,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00021",
+      "seed": 1722,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00022",
+      "seed": 1723,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00023",
+      "seed": 1724,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00024",
+      "seed": 1725,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00025",
+      "seed": 1726,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00026",
+      "seed": 1727,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00027",
+      "seed": 1728,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00028",
+      "seed": 1729,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00029",
+      "seed": 1730,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00030",
+      "seed": 1731,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    },
+    {
+      "id": "audio-classification-00031",
+      "seed": 1732,
+      "shape": [
+        1,
+        1,
+        16000
+      ]
+    }
+  ],
+  "schema_version": "1.0",
+  "seed": 1701,
+  "sha256": "73250edda17e6a92166b6a631532a3d52516c5732db4c4939aface95b7fe4ddc",
+  "task": "classification"
+}
