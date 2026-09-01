@@ -54,7 +54,7 @@ The release workflow validates that:
 
 Configure trusted publishing in PyPI and TestPyPI for:
 
-- Repository: `aihw-bench/aihw-bench`
+- Repository: `shashi065/aihw-bench`
 - Workflow: `release.yml`
 - Environments: `pypi` and `testpypi`
 

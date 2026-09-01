@@ -1,6 +1,6 @@
 # AIHW-Bench
 
-## AI Hardware Benchmark Suite
+## AI Hardware Benchmarking & Profiling Framework
 
 [![CI](https://github.com/shashi065/aihw-bench/actions/workflows/ci.yml/badge.svg)](https://github.com/shashi065/aihw-bench/actions/workflows/ci.yml)
 [![PyPI](https://img.shields.io/pypi/v/aihw-bench.svg)](https://pypi.org/project/aihw-bench/)
