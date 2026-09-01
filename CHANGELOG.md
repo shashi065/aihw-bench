@@ -6,6 +6,23 @@ This project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-09-01
+
+### Changed
+
+- Professionalized the public package presentation for PyPI, TestPyPI, and GitHub.
+- Improved the README and public documentation experience.
+- Improved GitHub Pages documentation presentation and build reproducibility.
+- Updated release engineering documentation and Trusted Publishing references.
+
+### Compatibility
+
+- Preserved the existing benchmark engine and public Python/CLI API.
+- Python 3.12+ remains supported.
+- No benchmark-engine functionality was changed in this maintenance release.
+
+
+
 ## [2.0.0] - 2026-08-31
 
 ### Added

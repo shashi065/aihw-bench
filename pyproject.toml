@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "aihw-bench"
-version = "2.0.0"
+version = "2.0.1"
 description = "Reproducible benchmarking and profiling for AI hardware, workloads, and accelerators."
 readme = "README.md"
 requires-python = ">=3.12"
