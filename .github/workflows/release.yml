@@ -284,7 +284,7 @@ jobs:
   publish-pypi:
     name: Publish to PyPI using Trusted Publishing
     needs: [validate, verify-testpypi]
-    if: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_pypi == true }}
+    if: ${{ github.event_name == 'push' || inputs.publish_pypi == true }}
     runs-on: ubuntu-latest
     environment:
       name: pypi
