@@ -1,19 +1,79 @@
-site_name: AI Hardware Benchmark Suite
-site_description: Universal benchmarking and profiling for AI hardware and accelerators.
-site_url: https://aihw-bench.github.io/aihw-bench/
-repo_url: https://github.com/aihw-bench/aihw-bench
-repo_name: aihw-bench/aihw-bench
+site_name: AIHW-Bench
+site_description: Reproducible benchmarking and profiling for AI hardware, workloads, and accelerators.
+site_url: https://shashi065.github.io/aihw-bench/
+repo_url: https://github.com/shashi065/aihw-bench
+repo_name: shashi065/aihw-bench
+edit_uri: edit/main/docs/
 theme:
   name: material
+  language: en
   features:
-    - navigation.sections
     - navigation.instant
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
     - content.code.copy
     - content.tabs.link
+    - search.highlight
+    - search.share
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+extra_css:
+  - stylesheets/extra.css
 nav:
   - Home: index.md
-  - Constitution: constitution.md
-  - Beginner Guide: user-guide/beginner.md
+  - Get Started:
+      - Installation: user-guide/installation.md
+      - Quick Start: user-guide/quick-start.md
+      - Beginner Guide: user-guide/beginner.md
+      - First Benchmark: tutorials/first-benchmark.md
+      - Troubleshooting: user-guide/troubleshooting.md
+  - User Guide:
+      - CLI: user-guide/cli.md
+      - Dashboard: user-guide/dashboard.md
+      - Local Benchmark Analysis Assistant: user-guide/assistant.md
+      - Advanced Guide: user-guide/advanced.md
+      - Migration Guide: user-guide/migration.md
+      - FAQ: user-guide/faq.md
+      - Tutorials:
+          - Compare Sessions: tutorials/compare-sessions.md
+          - Generate Reports: tutorials/generate-reports.md
+          - Build a Plugin: tutorials/build-a-plugin.md
+  - Benchmarks:
+      - Official Suite: benchmarks/official-suite.md
+  - Developer Guide:
+      - Architecture: developer-guide/architecture.md
+      - Model Support: developer-guide/model-support.md
+      - Backend Support: developer-guide/backend-support.md
+      - Hardware Support: developer-guide/hardware-support.md
+      - Metrics: developer-guide/metrics.md
+      - Reporting: developer-guide/reporting.md
+      - Visualization: developer-guide/visualization.md
+      - Performance: developer-guide/performance.md
+      - Plugin Development: developer-guide/plugin-development.md
+      - Contributing: developer-guide/contributing.md
+  - Enterprise: enterprise.md
+  - API Reference:
+      - Public Package: api/index.md
+      - Application Services: api/application.md
+      - Domain Models: api/domain.md
+      - Infrastructure: api/infrastructure.md
+      - CLI: api/cli.md
+  - Examples:
+      - Overview: examples/index.md
+      - Configuration Files: examples/configuration.md
+      - Python API: examples/python-api.md
+      - Plugins: examples/plugins.md
+      - Reports: examples/reports.md
   - Engineering:
       - Product Requirements: engineering/prd.md
       - Architecture Specification: engineering/architecture-specification.md
@@ -35,12 +95,6 @@ nav:
       - CLI Specification: engineering/cli-specification.md
       - Testing Strategy: engineering/testing-strategy.md
       - Release Engineering: engineering/release-engineering.md
-      - v1.0 Release Audit: engineering/v1-release-audit.md
-      - v1.0.1 Refactoring Report: engineering/v1.0.1-refactoring-report.md
-      - v1.0.1 Technical Debt Report: engineering/v1.0.1-technical-debt-report.md
-      - v1.0.1 Performance Report: engineering/v1.0.1-performance-report.md
-      - v1.1 Performance Report: engineering/v1.1-performance-report.md
-      - v1.0.1 Security Report: engineering/v1.0.1-security-report.md
       - Release Plan: engineering/release-plan.md
       - Distribution Strategy: engineering/distribution-strategy.md
       - Version Roadmap: engineering/version-roadmap.md
@@ -48,47 +102,15 @@ nav:
       - Engineering Handbook: engineering/engineering-handbook.md
       - Coding Standards: engineering/coding-standards.md
       - Contribution Standards: engineering/contribution-standards.md
-  - User Guide:
-      - Installation: user-guide/installation.md
-      - Quick Start: user-guide/quick-start.md
-      - Dashboard: user-guide/dashboard.md
-      - AI Assistant: user-guide/assistant.md
-      - Migration Guide: user-guide/migration.md
-      - Tutorials:
-          - First Benchmark: tutorials/first-benchmark.md
-          - Compare Sessions: tutorials/compare-sessions.md
-          - Generate Reports: tutorials/generate-reports.md
-          - Build A Plugin: tutorials/build-a-plugin.md
-      - CLI: user-guide/cli.md
-      - Advanced Guide: user-guide/advanced.md
-      - Troubleshooting: user-guide/troubleshooting.md
-      - FAQ: user-guide/faq.md
-  - Enterprise: enterprise.md
-  - Developer Guide:
-      - Architecture: developer-guide/architecture.md
-      - Contributing: developer-guide/contributing.md
-      - Plugin Development: developer-guide/plugin-development.md
-      - Model Support: developer-guide/model-support.md
-      - Backend Support: developer-guide/backend-support.md
-      - Advanced Hardware Support: developer-guide/hardware-support.md
-      - Metrics: developer-guide/metrics.md
-      - Reporting: developer-guide/reporting.md
-      - Visualization: developer-guide/visualization.md
-      - Performance Guide: developer-guide/performance.md
-  - Benchmarks:
-      - Official Suite: benchmarks/official-suite.md
-  - Examples:
-      - Overview: examples/index.md
-      - Configuration Files: examples/configuration.md
-      - Python API: examples/python-api.md
-      - Plugins: examples/plugins.md
-      - Reports: examples/reports.md
-  - API Reference:
-      - Public Package: api/index.md
-      - Application Services: api/application.md
-      - Domain Models: api/domain.md
-      - Infrastructure: api/infrastructure.md
-      - CLI: api/cli.md
+      - Historical Audits:
+          - v1.0 Release Audit: engineering/v1-release-audit.md
+          - v1.0.1 Refactoring Report: engineering/v1.0.1-refactoring-report.md
+          - v1.0.1 Technical Debt Report: engineering/v1.0.1-technical-debt-report.md
+          - v1.0.1 Performance Report: engineering/v1.0.1-performance-report.md
+          - v1.0.1 Security Report: engineering/v1.0.1-security-report.md
+          - v1.1 Performance Report: engineering/v1.1-performance-report.md
+  - Project:
+      - Constitution: constitution.md
 markdown_extensions:
   - admonition
   - attr_list

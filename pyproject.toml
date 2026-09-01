@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [project]
 name = "aihw-bench"
 version = "2.0.0"
-description = "A universal benchmarking and profiling framework for AI hardware, simulators, CPUs, GPUs, embedded AI platforms, and custom accelerators."
+description = "Reproducible benchmarking and profiling for AI hardware, workloads, and accelerators."
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "Apache-2.0" }
@@ -36,11 +36,11 @@ tflite = ["tflite-runtime>=2.14; platform_system != 'Windows'"]
 all-backends = ["torch>=2.3", "onnxruntime>=1.18"]
 
 [project.urls]
-Homepage = "https://github.com/aihw-bench/aihw-bench"
-Documentation = "https://aihw-bench.github.io/aihw-bench"
-Repository = "https://github.com/aihw-bench/aihw-bench"
-Issues = "https://github.com/aihw-bench/aihw-bench/issues"
-Changelog = "https://github.com/aihw-bench/aihw-bench/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/shashi065/aihw-bench"
+Documentation = "https://shashi065.github.io/aihw-bench/"
+Repository = "https://github.com/shashi065/aihw-bench"
+Issues = "https://github.com/shashi065/aihw-bench/issues"
+Changelog = "https://github.com/shashi065/aihw-bench/blob/main/CHANGELOG.md"
 
 [project.scripts]
 aihw-bench = "aihw_bench.presentation.cli.main:app"

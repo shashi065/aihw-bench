@@ -25,8 +25,8 @@ conda install -c conda-forge aihw-bench
 Docker usage target:
 
 ```bash
-docker pull ghcr.io/aihw-bench/aihw-bench:latest
-docker run --rm ghcr.io/aihw-bench/aihw-bench:latest version
+docker pull ghcr.io/shashi065/aihw-bench:latest
+docker run --rm ghcr.io/shashi065/aihw-bench:latest version
 ```
 
 Build and smoke-test the local image from a checkout:

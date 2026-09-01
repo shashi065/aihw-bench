@@ -1,0 +1,59 @@
+/* Public documentation presentation: accessible, responsive, and theme-compatible. */
+.hero {
+  max-width: 58rem;
+  padding: 2.5rem 0 2rem;
+}
+.hero h1 {
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.15rem;
+}
+.hero h2 {
+  color: var(--md-primary-fg-color);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 0;
+}
+.hero p {
+  font-size: 1.1rem;
+  max-width: 48rem;
+}
+.hero .md-button {
+  margin: 0.35rem 0.35rem 0.35rem 0;
+}
+.capability-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 1.75rem 0 2.5rem;
+}
+.capability-card {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 0.45rem;
+  padding: 1.1rem 1.2rem;
+}
+.capability-card h3 {
+  color: var(--md-primary-fg-color);
+  margin-top: 0;
+}
+.capability-card p:last-child {
+  margin-bottom: 0;
+}
+.status-pill {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 35%, transparent);
+  border-radius: 2rem;
+  color: var(--md-default-fg-color);
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0 0.35rem 1rem 0;
+  padding: 0.3rem 0.65rem;
+}
+@media screen and (max-width: 44.9375em) {
+  .hero { padding-top: 1.25rem; }
+  .hero h1 { font-size: 2.15rem; }
+  .capability-grid { grid-template-columns: 1fr; }
+}

@@ -109,7 +109,7 @@ The verification matrix includes Windows, Ubuntu, and macOS.
 The canonical documentation URL is:
 
 ```text
-https://aihw-bench.github.io/aihw-bench/
+https://shashi065.github.io/aihw-bench/
 ```
 
 If the GitHub organization changes, `mkdocs.yml`, repository metadata, package metadata, and release documentation must be updated in the same change.

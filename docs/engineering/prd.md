@@ -926,7 +926,7 @@ TestPyPI validates publishing before production releases and supports release pi
 GitHub Pages hosts versioned public documentation at:
 
 ```text
-https://aihw-bench.github.io/aihw-bench/
+https://shashi065.github.io/aihw-bench/
 ```
 
 ### Docker Hub and Container Registries
